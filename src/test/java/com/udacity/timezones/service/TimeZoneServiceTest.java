@@ -3,11 +3,14 @@ package com.udacity.timezones.service;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.*;
 
+@ExtendWith(MockitoExtension.class)
 public class TimeZoneServiceTest {
     private static WireMockServer wireMockServer = new WireMockServer(wireMockConfig().port(9989));
 
@@ -33,7 +36,7 @@ public class TimeZoneServiceTest {
     }
 
     @Test
-    void getAvailableTimezoneText_callsExternalApi_returnsTimeZones() {
+    public void getAvailableTimezoneText_callsExternalApi_returnsTimeZones() {
         String area = "area51";
 
         String expected = "Canada, Nigeria, Austria, New Zealand";
